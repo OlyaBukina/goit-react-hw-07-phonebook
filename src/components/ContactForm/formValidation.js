@@ -5,7 +5,7 @@ export const contactsSchema = yup.object().shape({
     .string()
     .min(2, 'Too short name!')
     .required('Name is a required field!'),
-  number: yup.string().required('Number is a required field!'),
+  phone: yup.string().required('Number is a required field!'),
 });
 export const validateName = value => {
   let errorMessage;

@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from '../../redux/contactsOperations';
 import { customAlphabet } from 'nanoid';
 
 import { contactsSchema, validateName, validateNumber } from './formValidation';
@@ -16,7 +16,7 @@ import {
 
 const initialValues = {
   name: '',
-  number: '',
+  phone: '',
 };
 const nanoId = customAlphabet('1234567890', 4);
 
@@ -33,7 +33,7 @@ export const ContactForm = () => {
       alert(`${values.name} is already in contacts.`);
       return;
     }
-    const newContact = { id: nanoId(), ...values };
+    const newContact = { createdAt: new Date(), ...values, id: nanoId() };
     dispatch(addContact(newContact));
     resetForm();
   };
@@ -61,10 +61,10 @@ export const ContactForm = () => {
           <FormField
             validate={validateNumber}
             type="tel"
-            name="number"
+            name="phone"
             placeholder="123-45-67"
           ></FormField>
-          <FormError name="number" component="div" />
+          <FormError name="phone" component="div" />
         </Label>
         <FormButton type="submit">Add contact</FormButton>
       </ContactsForm>

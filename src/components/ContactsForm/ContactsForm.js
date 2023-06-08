@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
-import { addContact } from '../../redux/contactsOperations';
+import { addContact } from 'redux/contactsOperations';
 import { customAlphabet } from 'nanoid';
 
 import { contactsSchema, validateName, validateNumber } from './formValidation';
@@ -21,11 +21,11 @@ const initialValues = {
 const nanoId = customAlphabet('1234567890', 4);
 
 export const ContactsForm = () => {
-  const contacts = useSelector(selectContacts);
+  const { items } = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const onFormSubmit = (values, { resetForm }) => {
-    const contactExists = contacts.find(
+    const contactExists = items.find(
       ({ name }) => name.toLowerCase() === values.name.toLowerCase()
     );
 

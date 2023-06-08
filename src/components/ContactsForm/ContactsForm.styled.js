@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 
-export const ContactsForm = styled(Form)`
+export const StyledForm = styled(Form)`
   width: 500px;
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@ export const FormButton = styled.button`
 `;
 
 export const FormField = styled(Field)`
-  padding: 5px;
+  padding: 3px;
 `;
 
 export const FormError = styled(ErrorMessage)`

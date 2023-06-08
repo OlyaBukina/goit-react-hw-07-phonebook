@@ -1,18 +1,18 @@
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 import { addContact } from '../../redux/contactsOperations';
 import { customAlphabet } from 'nanoid';
 
 import { contactsSchema, validateName, validateNumber } from './formValidation';
 
 import {
-  ContactsForm,
+  StyledForm,
   Label,
   FormButton,
   FormField,
   FormError,
-} from './ContactForm.styled';
+} from './ContactsForm.styled';
 
 const initialValues = {
   name: '',
@@ -20,8 +20,8 @@ const initialValues = {
 };
 const nanoId = customAlphabet('1234567890', 4);
 
-export const ContactForm = () => {
-  const contacts = useSelector(getContacts);
+export const ContactsForm = () => {
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const onFormSubmit = (values, { resetForm }) => {
@@ -44,8 +44,8 @@ export const ContactForm = () => {
       onSubmit={onFormSubmit}
       validationSchema={contactsSchema}
     >
-      <ContactsForm autoComplete="off">
-        <Label htmlFor="name">
+      <StyledForm autoComplete="off">
+        <Label>
           Name
           <FormField
             validate={validateName}
@@ -56,7 +56,7 @@ export const ContactForm = () => {
           <FormError name="name" component="div" />
         </Label>
 
-        <Label htmlFor="name">
+        <Label>
           Number
           <FormField
             validate={validateNumber}
@@ -67,7 +67,7 @@ export const ContactForm = () => {
           <FormError name="phone" component="div" />
         </Label>
         <FormButton type="submit">Add contact</FormButton>
-      </ContactsForm>
+      </StyledForm>
     </Formik>
   );
 };

@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const Item = styled.li`
   display: flex;
   align-items: baseline;
-  gap: 15px;
+  justify-content: space-between;
 `;
 
 export const Button = styled.button`
-  height: 20px;
+  height: 28px;
   width: 60px;
   display: flex;
   justify-content: center;

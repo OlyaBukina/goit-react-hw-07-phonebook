@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const NotiMes = styled.p`
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 700;
   color: #3f4f3d;
 `;
